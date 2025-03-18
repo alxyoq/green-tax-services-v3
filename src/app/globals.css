@@ -1,0 +1,151 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Brand Colors */
+  --primary: 142 70% 27%;      /* Main Green */
+  --primary-dark: 142 70% 22%; /* Darker Green */
+  --primary-light: 142 60% 35%; /* Lighter Green */
+  --secondary: 174 60% 31%;    /* Teal accent */
+  --tertiary: 83 59% 85%;      /* Light Mint Green */
+
+  /* Neutral Colors */
+  --background: 0 0% 100%;     /* White */
+  --foreground: 215 14% 15%;   /* Dark Gray for text */
+  --muted: 210 14% 95%;        /* Light Gray */
+  --muted-foreground: 215 14% 45%;
+  --accent: 142 30% 94%;       /* Very Light Green */
+  --accent-foreground: 142 70% 27%;
+
+  /* UI Colors */
+  --success: 142 70% 45%;      /* Success Green */
+  --warning: 38 92% 50%;       /* Warning Orange */
+  --destructive: 0 84% 60%;    /* Error Red */
+  --destructive-foreground: 0 0% 100%;
+
+  /* Component Variables */
+  --radius: 0.5rem;
+  --border: 210 14% 89%;
+  --input: 210 14% 89%;
+  --ring: 142 70% 27%;
+  --card: 0 0% 100%;
+  --card-foreground: 215 14% 15%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 215 14% 15%;
+  --primary-foreground: 0 0% 100%;
+  --secondary-foreground: 0 0% 100%;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-semibold tracking-tight;
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl;
+  }
+
+  h4 {
+    @apply text-xl md:text-2xl;
+  }
+
+  p {
+    @apply leading-7;
+  }
+
+  .container {
+    @apply max-w-screen-xl mx-auto px-4 md:px-6;
+  }
+}
+
+@layer components {
+  /* Modern Card Styling */
+  .feature-card {
+    @apply relative overflow-hidden rounded-xl border bg-background p-6 shadow-lg transition-all hover:shadow-xl;
+  }
+
+  /* Button Styles */
+  .btn-primary {
+    @apply bg-primary text-white hover:bg-primary-dark transition-colors;
+  }
+
+  .btn-outline {
+    @apply border-2 border-primary text-primary hover:bg-primary hover:text-white transition-colors;
+  }
+
+  /* Section Styles */
+  .section-padding {
+    @apply py-12 md:py-20;
+  }
+
+  /* Hero Section */
+  .hero-section {
+    @apply relative bg-accent py-16 md:py-24 lg:py-32 overflow-hidden;
+  }
+
+  .hero-content {
+    @apply relative z-10 max-w-screen-lg mx-auto text-center;
+  }
+
+  /* Animations */
+  .fade-in {
+    @apply motion-safe:animate-fadeIn;
+  }
+
+  .slide-up {
+    @apply motion-safe:animate-slideUpAndFade;
+  }
+
+  /* Navigation */
+  .nav-link {
+    @apply relative px-3 py-2 text-foreground/80 hover:text-primary transition-colors duration-200
+    after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-primary
+    after:scale-x-0 after:transition-transform hover:after:scale-x-100;
+  }
+
+  .nav-link-active {
+    @apply text-primary after:scale-x-100;
+  }
+}
+
+@layer utilities {
+  /* Custom animations */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUpAndFade {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-fadeIn {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  .animate-slideUpAndFade {
+    animation: slideUpAndFade 0.5s ease-out forwards;
+  }
+
+  /* Staggered animation utilities */
+  .animation-delay-100 { animation-delay: 100ms; }
+  .animation-delay-200 { animation-delay: 200ms; }
+  .animation-delay-300 { animation-delay: 300ms; }
+  .animation-delay-400 { animation-delay: 400ms; }
+  .animation-delay-500 { animation-delay: 500ms; }
+}
