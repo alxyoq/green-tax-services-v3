@@ -22,7 +22,7 @@ export default function AboutUsPage() {
             <h2 className="text-2xl font-heading font-semibold mb-4 text-primary">Our Story</h2>
             <p className="text-muted-foreground mb-4">
               Green Tax Services was founded with a simple mission: to provide exceptional tax and accounting services
-              that prioritize the financial well-being of our clients. Our team of experienced professionals is dedicated
+              that prioritize the financial well-being of our clients. Our team (family) of experienced professionals is dedicated
               to helping individuals and businesses navigate the complex world of taxation with confidence and ease.
             </p>
             <p className="text-muted-foreground">
