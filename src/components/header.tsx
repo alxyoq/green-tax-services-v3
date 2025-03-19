@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Calendar, ChevronDown } from "lucide-react";
+import { Menu, Calendar, ChevronDown } from "lucide-react";
 import {
   Sheet,
   SheetContent,
@@ -80,7 +80,6 @@ export function Header() {
                 onMouseLeave={() => setActiveDropdown(null)}
               >
                 {item.title === "Services" ? (
-                  // Render "Services" as a clickable link with a separate dropdown arrow.
                   <div className="flex items-center">
                     <Link
                       href={item.href}
@@ -218,12 +217,13 @@ export function Header() {
               </a>
             </Button>
           </div>
+          {/* Logo placed to the right of Book Appointment */}
           <Link href="/" className="flex items-center">
             <div className="p-2 bg-white rounded-full shadow-md">
               <Image
                 src="/logo-nobg.png"
                 alt="Logo"
-                width={75}
+                width={40}
                 height={40}
               />
             </div>
@@ -237,9 +237,7 @@ export function Header() {
               <Button
                 variant="ghost"
                 size="icon"
-                className={cn(
-                  isScrolled ? "text-primary hover:text-primary/80" : "text-white hover:text-white/80"
-                )}
+                className={cn("text-primary hover:text-primary/80")}
               >
                 <Menu className="h-6 w-6" />
                 <span className="sr-only">Toggle menu</span>
@@ -279,7 +277,7 @@ export function Header() {
                                   );
                                 }, 0);
                               }}
-                              className="block text-muted-foreground hover:text-primary transition-colors"
+                              className="block px-3 py-2 transition-colors rounded-md text-foreground hover:text-primary"
                             >
                               {subItem.title}
                             </Link>
@@ -294,20 +292,14 @@ export function Header() {
                           href={item.href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className={cn(
-                            "px-3 py-2 transition-colors rounded-md",
-                            isScrolled ? "text-foreground hover:text-primary" : "text-white hover:text-white/80"
-                          )}
+                          className="px-3 py-2 transition-colors rounded-md text-foreground hover:text-primary"
                         >
                           {item.title}
                         </a>
                       ) : (
                         <Link
                           href={item.href}
-                          className={cn(
-                            "px-3 py-2 transition-colors rounded-md",
-                            isScrolled ? "text-foreground hover:text-primary" : "text-white hover:text-white/80"
-                          )}
+                          className="px-3 py-2 transition-colors rounded-md text-foreground hover:text-primary"
                         >
                           {item.title}
                         </Link>
