@@ -30,7 +30,12 @@ export function CTASection() {
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button asChild size="lg" variant="default" className="bg-white text-primary hover:bg-gray-100 hover:text-primary-dark min-w-[200px]">
+              <Button
+                asChild
+                size="lg"
+                variant="default"
+                className="bg-white text-primary hover:bg-gray-100 min-w-[200px]"
+              >
                 <a
                   href="https://calendly.com/em--gts"
                   target="_blank"
@@ -41,7 +46,12 @@ export function CTASection() {
                   Book Appointment
                 </a>
               </Button>
-              <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white/20 min-w-[200px]">
+              <Button
+                asChild
+                size="lg"
+                variant="default"
+                className="bg-white text-primary hover:bg-gray-100 min-w-[200px]"
+              >
                 <a href="/contact-us" className="flex items-center justify-center gap-2 group">
                   Contact Us
                   <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
