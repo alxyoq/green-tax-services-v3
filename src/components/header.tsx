@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -11,7 +12,7 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-  SheetClose
+  SheetClose,
 } from "@/components/ui/sheet";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -19,7 +20,6 @@ const navItems = [
   { title: "Home", href: "/" },
   { title: "About Us", href: "/about-us" },
   {
-    // Main Services link now defaults to Individual tab.
     title: "Services",
     href: "/services#individual",
     subItems: [
@@ -27,11 +27,10 @@ const navItems = [
       { title: "Business Tax", href: "/services#business" },
       { title: "Bookkeeping", href: "/services#additional" },
       { title: "Tax Planning", href: "/services#additional" },
-    ]
+    ],
   },
   { title: "Our Process", href: "/our-process" },
   { title: "Contact Us", href: "/contact-us" },
-  // External link: render as plain anchor.
   { title: "Client Portal", href: "http://greentaxinc.taxdome.com/app", external: true },
   { title: "New Clients", href: "/new-clients" },
 ];
@@ -56,8 +55,8 @@ export function Header() {
       )}
     >
       <div className="container mx-auto flex items-center justify-between">
-        {/* Desktop Logo */}
-        <div className="flex-1">
+        {/* Left Section: Site Title */}
+        <div className="flex items-center">
           <Link href="/" className="flex items-center">
             <h1
               className={cn(
@@ -70,7 +69,7 @@ export function Header() {
           </Link>
         </div>
 
-        {/* Desktop Navigation */}
+        {/* Center Section: Navigation */}
         <nav className="hidden md:flex items-center space-x-1 lg:space-x-2">
           {navItems.map((item) =>
             item.subItems ? (
@@ -81,7 +80,7 @@ export function Header() {
                 onMouseLeave={() => setActiveDropdown(null)}
               >
                 {item.title === "Services" ? (
-                  // Render "Services" as a clickable link and a separate dropdown arrow.
+                  // Render "Services" as a clickable link with a separate dropdown arrow.
                   <div className="flex items-center">
                     <Link
                       href={item.href}
@@ -137,7 +136,6 @@ export function Header() {
                             key={subItem.title}
                             href={subItem.href}
                             onMouseEnter={() => {
-                              // Use a slight delay to ensure the event fires after any default behavior.
                               setTimeout(() => {
                                 window.dispatchEvent(
                                   new CustomEvent("servicesTabChange", {
@@ -195,29 +193,41 @@ export function Header() {
           )}
         </nav>
 
-        {/* Appointment Button */}
-        <div className="hidden md:block ml-6">
-          <Button
-            asChild
-            variant={isScrolled ? "default" : "outline"}
-            className={cn(
-              "font-medium",
-              isScrolled
-                ? "bg-primary text-white hover:bg-primary/90"
-                : "border-white text-white hover:bg-white/20",
-              !isScrolled && "bg-primary/20"
-            )}
-          >
-            <a
-              href="https://calendly.com/em--gts"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2"
+        {/* Right Section: Book Appointment button and Logo */}
+        <div className="flex items-center space-x-4">
+          <div className="hidden md:block">
+            <Button
+              asChild
+              variant={isScrolled ? "default" : "outline"}
+              className={cn(
+                "font-medium",
+                isScrolled
+                  ? "bg-primary text-white hover:bg-primary/90"
+                  : "border-white text-white hover:bg-white/20",
+                !isScrolled && "bg-primary/20"
+              )}
             >
-              <Calendar className="h-4 w-4" />
-              Book Appointment
-            </a>
-          </Button>
+              <a
+                href="https://calendly.com/em--gts"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2"
+              >
+                <Calendar className="h-4 w-4" />
+                Book Appointment
+              </a>
+            </Button>
+          </div>
+          <Link href="/" className="flex items-center">
+            <div className="p-2 bg-white rounded-full shadow-md">
+              <Image
+                src="/logo-nobg.png"
+                alt="Logo"
+                width={75}
+                height={40}
+              />
+            </div>
+          </Link>
         </div>
 
         {/* Mobile Menu */}
@@ -235,7 +245,7 @@ export function Header() {
                 <span className="sr-only">Toggle menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+            <SheetContent side="right" className="w-[300px] sm:w-[400px] bg-white">
               <SheetHeader>
                 <SheetTitle className="text-left text-primary font-heading">
                   Green Tax Services
