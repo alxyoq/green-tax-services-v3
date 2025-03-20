@@ -62,7 +62,7 @@ export function HeroSection() {
           >
             <div className="relative rounded-lg overflow-hidden shadow-2xl">
               <Image
-                src="https://web-assets.same.dev/2936524525/1458425064.jpeg"
+                src="kat.png"
                 alt="Green Tax Services Team Meeting"
                 width={600}
                 height={450}

@@ -26,17 +26,18 @@ const openSans = Open_Sans({
 
 export const metadata: Metadata = {
   title: "Green Tax Services, Inc - Professional Tax Services",
-  description: "Affordable, experienced, and friendly tax services for business owners, executives, and independent professionals.",
+  description:
+    "Affordable, experienced, and friendly tax services for business owners, executives, and independent professionals.",
   keywords: ["tax services", "accounting", "tax return", "business tax", "enrolled agent", "Lady Lake", "Florida"],
   icons: {
-    icon: "https://web-assets.same.dev/2411477007/2973385579.jpeg",
+    icon: "/logo.png",
   },
   openGraph: {
     type: "website",
     locale: "en_US",
     title: "Green Tax Services, Inc - Professional Tax Services",
     description: "Fighting To Reduce Your Tax. We are a full-service Accounting firm licensed in VT.",
-    images: ["https://web-assets.same.dev/2936524525/1458425064.jpeg"],
+    images: ["/kat.png"],
   },
 };
 

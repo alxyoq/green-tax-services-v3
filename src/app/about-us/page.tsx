@@ -35,8 +35,8 @@ export default function AboutUsPage() {
             <Image
               src="/my-image.png"
               alt="Green Tax Logo"
-              width={600}
-              height={450}
+              width={400}
+              height={150}
               className="w-full h-auto object-cover rounded-lg"
             />
           </div>
