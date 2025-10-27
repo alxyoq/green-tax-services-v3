@@ -47,7 +47,7 @@ export default function ContactForm() {
 
     try {
       // Submit to Netlify Forms
-      const formData = new FormData();
+      const formData = new URLSearchParams();
       formData.append('form-name', 'contact');
       formData.append('firstName', data.firstName);
       formData.append('lastName', data.lastName);
@@ -59,7 +59,7 @@ export default function ContactForm() {
       const response = await fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formData as any).toString(),
+        body: formData.toString(),
       });
 
       if (response.ok) {
