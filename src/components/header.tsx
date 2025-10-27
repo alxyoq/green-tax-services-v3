@@ -220,12 +220,15 @@ export function Header() {
           {/* Logo placed to the right of Book Appointment */}
           <Link href="/" className="flex items-center">
             <div className="p-2 bg-white rounded-full shadow-md">
-              <Image
-                src="/logo-nobg.png"
-                alt="Logo"
-                width={40}
-                height={40}
-              />
+              <picture>
+                <source srcSet="/logo-nobg.avif" type="image/avif" />
+                <Image
+                  src="/logo-nobg.png"
+                  alt="Logo"
+                  width={40}
+                  height={40}
+                />
+              </picture>
             </div>
           </Link>
         </div>

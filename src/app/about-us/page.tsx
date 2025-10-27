@@ -32,13 +32,16 @@ export default function AboutUsPage() {
             </p>
           </div>
           <div className="relative rounded-lg overflow-hidden shadow-lg">
-            <Image
-              src="/my-image.png"
-              alt="Green Tax Logo"
-              width={400}
-              height={150}
-              className="w-full h-auto object-cover rounded-lg"
-            />
+            <picture>
+              <source srcSet="/my-image.avif" type="image/avif" />
+              <Image
+                src="/my-image.png"
+                alt="Green Tax Logo"
+                width={400}
+                height={150}
+                className="w-full h-auto object-cover rounded-lg"
+              />
+            </picture>
           </div>
         </div>
 

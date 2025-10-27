@@ -61,14 +61,17 @@ export function HeroSection() {
             className="relative"
           >
             <div className="relative rounded-lg overflow-hidden shadow-2xl">
-              <Image
-                src="kat.png"
-                alt="Green Tax Services Team Meeting"
-                width={600}
-                height={450}
-                className="w-full h-auto object-cover rounded-lg"
-                priority
-              />
+              <picture>
+                <source srcSet="/kat.avif" type="image/avif" />
+                <Image
+                  src="/kat.png"
+                  alt="Green Tax Services Team Meeting"
+                  width={600}
+                  height={450}
+                  className="w-full h-auto object-cover rounded-lg"
+                  priority
+                />
+              </picture>
               <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent mix-blend-multiply rounded-lg"></div>
             </div>
 

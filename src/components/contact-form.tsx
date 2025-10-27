@@ -45,13 +45,36 @@ export default function ContactForm() {
   async function onSubmit(data: ContactFormValues) {
     setIsSubmitting(true);
 
-    // Simulate API call with timeout
-    setTimeout(() => {
-      console.log("Form submitted:", data);
+    try {
+      // Submit to Netlify Forms
+      const formData = new FormData();
+      formData.append('form-name', 'contact');
+      formData.append('firstName', data.firstName);
+      formData.append('lastName', data.lastName);
+      formData.append('email', data.email);
+      formData.append('phone', data.phone || '');
+      formData.append('subject', data.subject);
+      formData.append('message', data.message);
+
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData as any).toString(),
+      });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+        toast.success("Your message has been sent successfully. We'll get back to you soon.");
+        form.reset();
+      } else {
+        throw new Error('Form submission failed');
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      toast.error("There was an error sending your message. Please try again or contact us directly.");
+    } finally {
       setIsSubmitting(false);
-      setIsSubmitted(true);
-      toast.success("Your message has been sent successfully. We'll get back to you soon.");
-    }, 1500);
+    }
   }
 
   if (isSubmitted) {
@@ -74,7 +97,15 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6" name="contact" data-netlify="true" data-netlify-honeypot="bot-field">
+      {/* Hidden field for Netlify Forms */}
+      <input type="hidden" name="form-name" value="contact" />
+      {/* Honeypot field for spam protection */}
+      <div style={{ display: 'none' }}>
+        <label>
+          Don't fill this out if you're human: <input name="bot-field" />
+        </label>
+      </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div className="space-y-2">
           <Label htmlFor="firstName">First name</Label>
